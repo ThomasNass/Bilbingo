@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bilbingo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Bilbingo</h1>
+    <nav>
+      <button id="nav-items">Föremål</button>
+      <button id="nav-categories">Kategorier</button>
+      <button id="nav-generator">Skapa bingobricka</button>
+      <button id="logout-btn" class="hidden">Logga ut</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="item-page" class="page hidden">
+      <h2>Administrera bingoföremål</h2>
+      <!-- Add-item form removed; use the floating add button to open modal -->
+
+      <div class="card">
+        <div class="list-header">
+          <h3>Alla bingoföremål</h3>
+          <button id="open-add-modal" class="btn-add">Lägg till föremål</button>
+        </div>
+        <div class="table-wrapper scrollable-list">
+          <table id="item-list"></table>
+        </div>
+      </div>
+
+      <div id="edit-modal" class="modal hidden">
+        <div class="modal-content">
+          <button type="button" id="close-edit-modal" class="modal-close">×</button>
+          <h3>Redigera bingoföremål</h3>
+          <form id="edit-form">
+            <label>Föremål<input type="text" id="edit-text" required /></label>
+            <label>Kategorier</label>
+            <div id="edit-category-checkboxes" class="checkbox-group"></div>
+            <label>Åldersgrupp
+              <select id="edit-age">
+                <option value="both">Båda</option>
+                <option value="children">Barn</option>
+                <option value="adult">Vuxen</option>
+              </select>
+            </label>
+            <div class="button-row">
+              <button type="submit">Spara ändringar</button>
+              <button type="button" id="cancel-edit">Avbryt</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div id="add-modal" class="modal hidden">
+        <div class="modal-content">
+          <button type="button" id="close-add-modal" class="modal-close">×</button>
+          <h3>Lägg till bingoföremål</h3>
+          <form id="add-form">
+            <label>Föremål<input type="text" id="add-text" required /></label>
+            <label>Kategorier</label>
+            <div id="add-category-checkboxes" class="checkbox-group"></div>
+            <label>Åldersgrupp
+              <select id="add-age">
+                <option value="both">Båda</option>
+                <option value="children">Barn</option>
+                <option value="adult">Vuxen</option>
+              </select>
+            </label>
+            <div class="button-row">
+              <button type="submit" class="btn-add">Lägg till föremål</button>
+              <button type="button" id="cancel-add">Avbryt</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="category-page" class="page hidden">
+      <h2>Administrera kategorier</h2>
+      <div class="card">
+          <div class="list-header">
+          <h3>Alla kategorier</h3>
+          <button id="open-add-category-modal" class="btn-add">Lägg till kategori</button>
+        </div>
+        <div class="table-wrapper scrollable-list">
+          <table id="category-list" class="data-table"></table>
+        </div>
+      </div>
+      <div id="add-category-modal" class="modal hidden">
+        <div class="modal-content">
+          <button type="button" id="close-add-category-modal" class="modal-close">×</button>
+          <h3>Lägg till kategori</h3>
+          <form id="add-category-form">
+            <label>Namn<input type="text" id="add-category-name" required /></label>
+            <div class="button-row">
+              <button type="submit" id="submit-add-category" class="btn-add">Lägg till kategori</button>
+              <button type="button" id="cancel-add-category">Avbryt</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="generator-page" class="page hidden">
+      <h2>Generera bingobricka</h2>
+      <div class="card">
+        <form id="generator-form">
+          <label>Rutnätsstorlek
+            <select id="grid-size">
+              <option value="3">3 x 3</option>
+              <option value="4">4 x 4</option>
+              <option value="5" selected>5 x 5</option>
+            </select>
+          </label>
+          <div id="row-rules-section">
+            <p>Radspecifikationer</p>
+            <div id="row-rules-container"></div>
+          </div>
+          <label>Åldersgrupp
+            <select id="generator-age">
+              <option value="both">Båda</option>
+              <option value="children">Barn</option>
+              <option value="adult">Vuxen</option>
+            </select>
+          </label>
+          <button type="submit">Generera</button>
+          <button type="button" id="clear-board" class="btn-delete">Rensa brickan</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h3>Resultat</h3>
+        <div id="board-container"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="login-modal" class="modal hidden">
+    <div class="modal-content">
+      <h3>Logga in</h3>
+      <form id="login-form">
+        <label>Användarnamn
+          <input type="text" id="login-name" required />
+        </label>
+        <label>Lösenord
+          <input type="password" id="login-password" required />
+        </label>
+        <div class="button-row">
+          <button type="submit">Logga in</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="scripts/app.js"></script>
+</body>
+</html>
