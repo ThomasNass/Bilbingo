@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://script.google.com/macros/s/AKfycbw43i0MOHgQLfcShdq5HjbQauz6HJ2FOhmpMuLjfHoTnfE22gwm-092lWdVH92Zufg1cw/exec';
+const API_BASE_URL = '/api/proxy';
 
 const AGE_LABELS = {
   both: 'Båda',
