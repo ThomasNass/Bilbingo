@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import CrudTable from '@/components/CrudTable';
-import { supabase } from '@/lib/supabase/client';
+import { isSupabaseConfigured, supabase } from '@/lib/supabase/client';
 
 const AGE_LABELS = {
   both: 'Båda',
@@ -32,6 +32,20 @@ export default function BilbingoApp() {
   const [gridSize, setGridSize] = useState(5);
   const [rowRules, setRowRules] = useState([]);
   const [board, setBoard] = useState([]);
+
+  if (!isSupabaseConfigured || !supabase) {
+    return (
+      <main>
+        <div className="container">
+          <section className="card hero">
+            <h1>Bilbingo</h1>
+            <p>Supabase är inte konfigurerat för den här deploymenten.</p>
+            <p className="muted">Lägg till `NEXT_PUBLIC_SUPABASE_URL` och `NEXT_PUBLIC_SUPABASE_ANON_KEY` i miljövariablerna för att starta appen.</p>
+          </section>
+        </div>
+      </main>
+    );
+  }
 
   useEffect(() => {
     const loadSession = async () => {
